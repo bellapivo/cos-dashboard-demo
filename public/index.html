@@ -29,9 +29,10 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   ::selection { background: rgba(139,92,246,0.3); color: white; }
 
-  html, body {
+  html {
     margin: 0; padding: 0;
     overflow-x: hidden;
+    width: 100vw;
   }
   body {
     font-family: 'DM Sans', 'Outfit', sans-serif;
@@ -39,6 +40,13 @@
     color: var(--text);
     min-height: 100vh;
     position: relative;
+    margin: 0; padding: 0;
+    overflow-x: hidden;
+    width: 100vw;
+    max-width: 100vw;
+  }
+  .dashboard, .grid, .card, .one-thing, .projects-grid, header {
+    overflow: hidden;
   }
 
   body::before {
