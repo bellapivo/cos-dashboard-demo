@@ -29,6 +29,9 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   ::selection { background: rgba(139,92,246,0.3); color: white; }
 
+  html {
+    overflow-x: hidden;
+  }
   body {
     font-family: 'DM Sans', 'Outfit', sans-serif;
     background: var(--light);
@@ -36,7 +39,7 @@
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
-    width: 100vw;
+    max-width: 100vw;
   }
 
   body::before {
@@ -67,11 +70,10 @@
 
   .dashboard {
     position: relative; z-index: 1;
-    width: 1480px;
-    max-width: 100%;
+    max-width: 1480px;
+    width: 100%;
     margin: 0 auto;
     padding: 40px 48px 100px;
-    transform-origin: top center;
   }
 
   /* ===== HEADER ===== */
@@ -158,7 +160,7 @@
   /* ===== MAIN GRID ===== */
   .grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 320px;
+    grid-template-columns: 1fr 1fr minmax(280px, 320px);
     gap: 20px;
     grid-template-areas:
       "one-thing  one-thing  one-thing"
@@ -1957,55 +1959,15 @@
   });
 </script>
 
-<script>
-// Auto-scale dashboard to fit viewport width
-(function() {
-  const dashboard = document.querySelector('.dashboard');
-  const DESIGN_WIDTH = 1480;
-
-  function scaleDashboard() {
-    const vw = window.innerWidth;
-    if (vw < DESIGN_WIDTH) {
-      const scale = vw / DESIGN_WIDTH;
-      dashboard.style.transform = 'scale(' + scale + ')';
-      dashboard.style.width = DESIGN_WIDTH + 'px';
-      dashboard.style.maxWidth = 'none';
-      dashboard.style.transformOrigin = 'top left';
-      dashboard.style.margin = '0';
-      // Adjust container height to match scaled content
-      var wrapper = document.getElementById('dashboard-scale-wrapper');
-      if (wrapper) {
-        wrapper.style.height = (dashboard.scrollHeight * scale) + 'px';
-        wrapper.style.overflow = 'hidden';
-      }
-    } else {
-      dashboard.style.transform = 'none';
-      dashboard.style.width = '';
-      dashboard.style.maxWidth = '100%';
-      dashboard.style.margin = '0 auto';
-      dashboard.style.transformOrigin = '';
-      var wrapper = document.getElementById('dashboard-scale-wrapper');
-      if (wrapper) {
-        wrapper.style.height = '';
-        wrapper.style.overflow = '';
-      }
-    }
-  }
-
-  // Wrap dashboard in a scaling container
-  var wrapper = document.createElement('div');
-  wrapper.id = 'dashboard-scale-wrapper';
-  wrapper.style.width = '100%';
-  wrapper.style.position = 'relative';
-  dashboard.parentNode.insertBefore(wrapper, dashboard);
-  wrapper.appendChild(dashboard);
-
-  scaleDashboard();
-  window.addEventListener('resize', scaleDashboard);
-  // Re-calculate after all content has rendered
-  window.addEventListener('load', scaleDashboard);
-})();
-</script>
+<!-- Demo banner -->
+<div id="demo-banner" style="position:fixed;top:16px;right:16px;z-index:99999;background:white;color:#1a1a2e;padding:14px 20px;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.3);max-width:300px;font-family:'DM Sans',sans-serif;font-size:13px;line-height:1.5;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+    <span style="font-weight:700;font-size:14px;">This is a demo</span>
+    <button onclick="document.getElementById('demo-banner').style.display='none'" style="background:none;border:none;cursor:pointer;font-size:18px;color:#999;line-height:1;">&times;</button>
+  </div>
+  <div style="color:#555;">All data shown is mock/example data. Like what you see?</div>
+  <a href="https://bellapivo.com" target="_blank" style="display:inline-block;margin-top:8px;color:#8b5cf6;font-weight:600;text-decoration:none;">bellapivo.com &rarr;</a>
+</div>
 
 </body>
 </html>
