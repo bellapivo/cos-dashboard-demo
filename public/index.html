@@ -1706,21 +1706,17 @@
       const tooltipWidth = 300;
       const gap = 20;
 
-      // Check if there's room on the right
-      const rightSpace = window.innerWidth - rect.right;
-      const leftSpace = rect.left;
+      // If card center is in the right half of the screen, always flip tooltip to the left
+      const cardCenter = rect.left + rect.width / 2;
+      const screenMid = window.innerWidth / 2;
 
       let x, flip;
-      if (rightSpace > tooltipWidth + gap + 20) {
-        // Place to the right
-        x = rect.right + gap;
-        flip = false;
-      } else if (leftSpace > tooltipWidth + gap + 20) {
-        // Place to the left
+      if (cardCenter > screenMid) {
+        // Card is on the right side — tooltip goes LEFT
         x = rect.left - tooltipWidth - gap;
         flip = true;
       } else {
-        // Fallback: right side, possibly overlapping
+        // Card is on the left side — tooltip goes RIGHT
         x = rect.right + gap;
         flip = false;
       }
