@@ -45,15 +45,11 @@
     width: 100vw;
     max-width: 100vw;
   }
-  .dashboard, .grid, .card, .one-thing, .projects-grid, header {
-    overflow: hidden;
-  }
-
   body::before {
     content: '';
     position: fixed;
-    top: -30%; right: -20%;
-    width: 80vw; height: 80vw;
+    top: -30%; right: 0;
+    width: 60vw; height: 60vw;
     background: radial-gradient(circle, rgba(139,92,246,0.08) 0%, rgba(244,114,182,0.04) 40%, transparent 70%);
     pointer-events: none; z-index: 0;
   }
@@ -61,7 +57,7 @@
   body::after {
     content: '';
     position: fixed;
-    bottom: -20%; left: -15%;
+    bottom: -20%; left: 0;
     width: 60vw; height: 60vw;
     background: radial-gradient(circle, rgba(52,211,153,0.04) 0%, rgba(139,92,246,0.03) 50%, transparent 70%);
     pointer-events: none; z-index: 0;
@@ -294,11 +290,11 @@
   }
 
   .explainer-connector.left-side {
-    right: -20px;
+    right: 0;
   }
 
   .explainer-connector.right-side {
-    left: -20px;
+    left: 0;
   }
 
   /* ===== THE ONE THING ===== */
@@ -316,8 +312,8 @@
   .one-thing::before {
     content: '';
     position: absolute;
-    top: -60%; right: -15%;
-    width: 500px; height: 500px;
+    top: -60%; right: 0;
+    width: 400px; height: 400px;
     background: radial-gradient(circle, rgba(255,0,110,0.12) 0%, rgba(95,53,178,0.08) 40%, transparent 70%);
     pointer-events: none;
   }
@@ -440,7 +436,7 @@
   .astro::after {
     content: '';
     position: absolute;
-    bottom: -30%; right: -20%;
+    bottom: -30%; right: 0;
     width: 200px; height: 200px;
     background: radial-gradient(circle, rgba(95,53,178,0.2) 0%, rgba(255,0,110,0.05) 50%, transparent 70%);
     pointer-events: none;
@@ -745,7 +741,7 @@
   .time-block::before {
     content: '';
     position: absolute;
-    left: -24px; top: 14px;
+    left: 0; top: 14px;
     width: 13px; height: 13px;
     border-radius: 50%;
     border: 2px solid var(--purple);
@@ -858,7 +854,7 @@
 
   .bottle-wave {
     position: absolute;
-    bottom: 0; left: -10%;
+    bottom: 0; left: 0;
     width: 120%; height: 12px;
     opacity: 0;
   }
@@ -1037,7 +1033,7 @@
   /* Email hover preview panel */
   .email-preview-panel {
     position: absolute;
-    right: -10px;
+    right: 0;
     top: 50%;
     transform: translateX(100%) translateY(-50%);
     width: 280px;
@@ -1202,7 +1198,7 @@
   .post-today::before {
     content: '';
     position: absolute;
-    top: -30%; right: -15%;
+    top: -30%; right: 0;
     width: 250px; height: 250px;
     background: radial-gradient(circle, rgba(255,0,110,0.12), transparent 70%);
     pointer-events: none;
