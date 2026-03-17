@@ -40,6 +40,7 @@
     color: var(--text);
     min-height: 100vh;
     position: relative;
+    zoom: 0.8;
   }
 
   body::before {
@@ -1170,7 +1171,12 @@
   .ptask { display: flex; align-items: flex-start; gap: 10px; padding: 6px 0; font-size: 0.82rem; line-height: 1.35; color: var(--text); }
   .ptask + .ptask { border-top: 1px solid rgba(0,0,0,0.03); }
 
-  .ptask-check { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--glass-border); flex-shrink: 0; margin-top: 1px; }
+  .ptask-check { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--glass-border); flex-shrink: 0; margin-top: 1px; cursor: pointer; transition: all 0.3s; }
+  .ptask-check:hover { border-color: var(--green); background: rgba(52,211,153,0.15); }
+  .ptask.done .ptask-check { background: var(--green); border-color: var(--green); }
+  .ptask.done .ptask-check::after { content: '✓'; color: #fff; font-size: 11px; display: flex; align-items: center; justify-content: center; height: 100%; }
+  .ptask.done .ptask-text { text-decoration: line-through; opacity: 0.4; }
+  .ptask.done .ptask-due { opacity: 0.3; }
   .ptask-text { flex: 1; }
 
   .ptask-due { font-family: 'Space Mono', monospace; font-size: 0.55rem; color: var(--text-muted); white-space: nowrap; flex-shrink: 0; padding-top: 3px; }
@@ -1308,8 +1314,6 @@
         <span style="font-size:0.85rem;">🧠</span>
         <span style="position:absolute;top:2px;right:2px;width:8px;height:8px;border-radius:50%;background:#00c896;animation:pulse 2s ease-in-out infinite;"></span>
       </div>
-      <div class="nav-btn">☀️</div>
-      <div class="nav-btn">🌙</div>
     </div>
   </header>
 
@@ -1341,10 +1345,10 @@
             <div class="project-count">4 left</div>
           </div>
           <div class="project-progress"><div class="project-progress-fill" style="width:55%;"></div></div>
-          <div class="ptask"><div class="ptask-check"></div><div class="ptask-text">Draft quarterly report for team review</div><div class="ptask-due today">today</div></div>
-          <div class="ptask"><div class="ptask-check"></div><div class="ptask-text">Review project proposals from last week</div><div class="ptask-due soon">3/19</div></div>
-          <div class="ptask"><div class="ptask-check"></div><div class="ptask-text">Prep for Wednesday all-hands presentation</div><div class="ptask-due">3/18</div></div>
-          <div class="ptask"><div class="ptask-check"></div><div class="ptask-text">Send updated budget to finance</div><div class="ptask-due">3/22</div></div>
+          <div class="ptask"><div class="ptask-check" onclick="this.parentElement.classList.toggle('done')"></div><div class="ptask-text">Draft quarterly report for team review</div><div class="ptask-due today">today</div></div>
+          <div class="ptask"><div class="ptask-check" onclick="this.parentElement.classList.toggle('done')"></div><div class="ptask-text">Review project proposals from last week</div><div class="ptask-due soon">3/19</div></div>
+          <div class="ptask"><div class="ptask-check" onclick="this.parentElement.classList.toggle('done')"></div><div class="ptask-text">Prep for Wednesday all-hands presentation</div><div class="ptask-due">3/18</div></div>
+          <div class="ptask"><div class="ptask-check" onclick="this.parentElement.classList.toggle('done')"></div><div class="ptask-text">Send updated budget to finance</div><div class="ptask-due">3/22</div></div>
         </div>
         <div class="project-group side">
           <div class="project-header">
@@ -1352,9 +1356,9 @@
             <div class="project-count">3 left</div>
           </div>
           <div class="project-progress"><div class="project-progress-fill" style="width:40%;"></div></div>
-          <div class="ptask"><div class="ptask-check"></div><div class="ptask-text">Fix landing page mobile layout</div><div class="ptask-due overdue">3/15</div></div>
-          <div class="ptask"><div class="ptask-check"></div><div class="ptask-text">Write copy for launch email</div><div class="ptask-due soon">3/20</div></div>
-          <div class="ptask"><div class="ptask-check"></div><div class="ptask-text">Set up analytics tracking</div><div class="ptask-due">3/24</div></div>
+          <div class="ptask"><div class="ptask-check" onclick="this.parentElement.classList.toggle('done')"></div><div class="ptask-text">Fix landing page mobile layout</div><div class="ptask-due overdue">3/15</div></div>
+          <div class="ptask"><div class="ptask-check" onclick="this.parentElement.classList.toggle('done')"></div><div class="ptask-text">Write copy for launch email</div><div class="ptask-due soon">3/20</div></div>
+          <div class="ptask"><div class="ptask-check" onclick="this.parentElement.classList.toggle('done')"></div><div class="ptask-text">Set up analytics tracking</div><div class="ptask-due">3/24</div></div>
         </div>
         <div class="project-group creative">
           <div class="project-header">
@@ -1362,9 +1366,9 @@
             <div class="project-count">3 left</div>
           </div>
           <div class="project-progress"><div class="project-progress-fill" style="width:50%;"></div></div>
-          <div class="ptask"><div class="ptask-check"></div><div class="ptask-text">Film behind-the-scenes video</div><div class="ptask-due today">today</div></div>
-          <div class="ptask"><div class="ptask-check"></div><div class="ptask-text">Edit newsletter draft</div><div class="ptask-due soon">3/19</div></div>
-          <div class="ptask"><div class="ptask-check"></div><div class="ptask-text">Batch social posts for the week</div><div class="ptask-due">3/20</div></div>
+          <div class="ptask"><div class="ptask-check" onclick="this.parentElement.classList.toggle('done')"></div><div class="ptask-text">Film behind-the-scenes video</div><div class="ptask-due today">today</div></div>
+          <div class="ptask"><div class="ptask-check" onclick="this.parentElement.classList.toggle('done')"></div><div class="ptask-text">Edit newsletter draft</div><div class="ptask-due soon">3/19</div></div>
+          <div class="ptask"><div class="ptask-check" onclick="this.parentElement.classList.toggle('done')"></div><div class="ptask-text">Batch social posts for the week</div><div class="ptask-due">3/20</div></div>
         </div>
         <div class="project-group life">
           <div class="project-header">
@@ -1372,8 +1376,8 @@
             <div class="project-count">2 left</div>
           </div>
           <div class="project-progress"><div class="project-progress-fill" style="width:75%;"></div></div>
-          <div class="ptask"><div class="ptask-check"></div><div class="ptask-text">Schedule dentist appointment</div><div class="ptask-due overdue">3/14</div></div>
-          <div class="ptask"><div class="ptask-check"></div><div class="ptask-text">Order birthday gift</div><div class="ptask-due">3/25</div></div>
+          <div class="ptask"><div class="ptask-check" onclick="this.parentElement.classList.toggle('done')"></div><div class="ptask-text">Schedule dentist appointment</div><div class="ptask-due overdue">3/14</div></div>
+          <div class="ptask"><div class="ptask-check" onclick="this.parentElement.classList.toggle('done')"></div><div class="ptask-text">Order birthday gift</div><div class="ptask-due">3/25</div></div>
         </div>
       </div>
     </div>
