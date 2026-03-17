@@ -30,9 +30,8 @@
   ::selection { background: rgba(139,92,246,0.3); color: white; }
 
   html, body {
-    overflow-x: hidden !important;
-    max-width: 100vw !important;
-    width: 100% !important;
+    overflow: hidden !important;
+    margin: 0; padding: 0;
   }
   body {
     font-family: 'DM Sans', 'Outfit', sans-serif;
@@ -40,7 +39,6 @@
     color: var(--text);
     min-height: 100vh;
     position: relative;
-    zoom: 0.8;
   }
 
   body::before {
@@ -71,11 +69,10 @@
 
   .dashboard {
     position: relative; z-index: 1;
-    max-width: 100%;
-    width: 100%;
-    margin: 0 auto;
-    padding: 40px 3vw 100px;
-    overflow: hidden;
+    width: 1480px;
+    margin: 0;
+    padding: 40px 48px 100px;
+    transform-origin: top left;
   }
 
   /* ===== HEADER ===== */
@@ -1965,6 +1962,24 @@
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeMeetingPrep();
   });
+</script>
+
+<script>
+(function(){
+  var d = document.querySelector('.dashboard');
+  function fit(){
+    var s = Math.min(window.innerWidth / 1480, 1);
+    d.style.transform = 'scale('+s+')';
+    document.body.style.height = (d.scrollHeight * s) + 'px';
+    document.body.style.overflow = 'auto';
+    document.documentElement.style.overflow = 'auto';
+    document.body.style.overflowX = 'hidden';
+    document.documentElement.style.overflowX = 'hidden';
+  }
+  fit();
+  window.addEventListener('resize', fit);
+  window.addEventListener('load', fit);
+})();
 </script>
 
 <!-- Demo banner -->
